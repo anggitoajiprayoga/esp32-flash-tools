@@ -1,0 +1,23 @@
+{
+  "name": "esp32-flash-tools",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "dev": "vite --host 127.0.0.1",
+    "build": "tsc --noEmit && vite build",
+    "preview": "vite preview --host 127.0.0.1",
+    "test": "node --test tests/*.test.mjs"
+  },
+  "dependencies": {
+    "esptool-js": "^0.6.1",
+    "spark-md5": "^3.0.2",
+    "webserial-core": "^2.1.0"
+  },
+  "devDependencies": {
+    "@types/spark-md5": "^3.0.5",
+    "@types/w3c-web-serial": "^1.0.8",
+    "typescript": "^7.0.2",
+    "vite": "^8.3.0"
+  }
+}
