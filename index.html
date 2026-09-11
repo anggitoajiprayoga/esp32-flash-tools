@@ -1,0 +1,39 @@
+<!doctype html>
+<html lang="id">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="theme-color" content="#f6f8fb" />
+    <meta name="description" content="Flash firmware ESP32 langsung dari browser melalui USB." />
+    <title>ESP32 Flash Tools</title>
+  </head>
+  <body>
+    <header class="topbar"><a class="brand" href="./"><span class="brand-icon">▦</span> ESP32 <span>Flash Tools</span></a><span class="local-badge"><i></i> Berjalan di browser Anda</span></header>
+    <main>
+      <div class="intro"><span class="eyebrow">WORKSPACE / FLASHER</span><h1>Firmware baru.<br /><span>Kemungkinan baru.</span></h1><p>Upload firmware ke ESP32 melalui USB.<br />Pilih perangkat, tambahkan file, dan mulai flash.</p></div>
+      <div id="compatibility" class="notice" role="status"></div>
+      <div class="workspace">
+        <section class="card device-card" aria-labelledby="device-title">
+          <div class="section-heading"><span class="step">01</span><h2 id="device-title">Hubungkan perangkat</h2></div>
+          <div class="board-art" aria-hidden="true"><div class="board"><div class="antenna"></div><div class="chip">ESP32<span>WIRELESS MODULE</span></div><div class="board-led"></div><div class="usb"></div></div><span class="orbit orbit-one"></span><span class="orbit orbit-two"></span></div>
+          <div class="device-info"><span id="connection-state" class="status"><i></i> Belum terhubung</span><h3 id="chip-name">ESP32 Anda siap?</h3><p id="device-description">Gunakan kabel USB yang mendukung transfer data.</p></div>
+          <div id="android-usb-setting" hidden><label for="android-usb-mode">Jenis koneksi USB Android</label><select id="android-usb-mode"><option value="cp210x">CP210x · ESP32 DevKit</option><option value="s3-native">USB native · ESP32-S3</option></select></div>
+          <label for="baudrate">Kecepatan upload</label><select id="baudrate"><option value="115200">115200 baud · stabil</option><option value="460800" selected>460800 baud · disarankan</option><option value="921600">921600 baud · cepat</option></select>
+          <button id="connect" class="button primary">Hubungkan ESP32 <span>↗</span></button>
+          <p class="small-note">Tutup Serial Monitor sebelum menghubungkan.</p>
+        </section>
+        <section class="card firmware-card" aria-labelledby="firmware-title">
+          <div class="section-heading"><span class="step">02</span><h2 id="firmware-title">Siapkan firmware</h2><span class="tag">.BIN</span></div>
+          <label id="dropzone" class="dropzone" for="firmware-input"><span class="upload-icon" aria-hidden="true">↑</span><strong>Pilih atau letakkan file firmware</strong><span>Pilih satu file firmware aplikasi berformat .bin</span><span class="file-button">Pilih firmware.bin</span><input id="firmware-input" type="file" accept=".bin,application/octet-stream" /></label>
+          <div id="files" class="files"></div>
+          <p class="address-help">Firmware aplikasi akan ditulis otomatis ke partisi aplikasi pada <code>0x10000</code>. Bootloader, tabel partisi, dan data perangkat tetap dipertahankan.</p>
+          <div class="flash-bottom"><div class="section-heading"><span class="step">03</span><h2>Mulai flash</h2></div><p>Firmware aplikasi lama akan diganti. Pastikan file dibuat untuk board ini dan jangan cabut kabel selama proses.</p><div class="progress-heading"><span id="progress-label" role="status">Menunggu perangkat dan firmware</span><span id="progress-value">0%</span></div><progress id="progress" max="100" value="0" aria-label="Progres flash"></progress><button id="flash" class="button primary" disabled>⚡ Flash firmware</button></div>
+        </section>
+        <section class="card console-card" aria-labelledby="console-title"><div class="console-heading"><h2 id="console-title"><span aria-hidden="true">›_</span> Log aktivitas</h2><button id="clear-log" class="text-button">Bersihkan</button></div><pre id="log" tabindex="0" aria-label="Log aktivitas perangkat"></pre></section>
+      </div>
+      <details class="help" open><summary>Perangkat tidak terhubung?</summary><p>Di komputer, gunakan Chrome atau Edge. Di Android, gunakan Google Chrome dan adaptor USB OTG. Masukkan ESP32 ke bootloader secara manual: tahan BOOT, tekan lalu lepaskan EN/RESET, kemudian lepaskan BOOT. Setelah itu klik Hubungkan dan izinkan akses USB. Setelah flash selesai, tekan EN/RESET untuk menjalankan firmware.</p></details>
+      <footer><span><i></i> File firmware tetap di komputer Anda.</span><a href="https://espressif.github.io/esptool-js/docs/" target="_blank" rel="noreferrer">Didukung esptool-js ↗</a></footer>
+    </main>
+    <script type="module" src="/src/main.ts"></script>
+  </body>
+</html>
